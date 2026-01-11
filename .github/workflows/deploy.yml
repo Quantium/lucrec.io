@@ -1,0 +1,70 @@
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: |
+          # Sync all files excluding source files and build artifacts
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "node_modules/*" \
+            --exclude "package*.json" \
+            --exclude "*.md" \
+            --exclude ".DS_Store" \
+            --exclude "css/style.css" \
+            --delete
+          
+          # Upload HTML files with no-cache headers
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              aws s3 cp "$file" s3://${{ secrets.S3_BUCKET_NAME }}/"$file" \
+                --cache-control "public, max-age=0, must-revalidate" \
+                --content-type "text/html"
+            fi
+          done
+          
+          # Upload CSS file with short cache
+          if [ -f "style.css" ]; then
+            aws s3 cp style.css s3://${{ secrets.S3_BUCKET_NAME }}/style.css \
+              --cache-control "public, max-age=3600" \
+              --content-type "text/css"
+          fi
+
+      - name: Invalidate CloudFront
+        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
