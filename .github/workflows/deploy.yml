@@ -36,7 +36,7 @@ jobs:
       - name: Deploy to S3
         run: |
           # Sync all files excluding source files and build artifacts
-          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }} \
             --exclude ".git/*" \
             --exclude ".github/*" \
             --exclude "node_modules/*" \
@@ -49,7 +49,7 @@ jobs:
           # Upload HTML files with no-cache headers
           for file in *.html; do
             if [ -f "$file" ]; then
-              aws s3 cp "$file" s3://${{ secrets.S3_BUCKET_NAME }}/"$file" \
+              aws s3 cp "$file" s3://${{ secrets.AWS_S3_BUCKET }}/"$file" \
                 --cache-control "public, max-age=0, must-revalidate" \
                 --content-type "text/html"
             fi
@@ -57,14 +57,7 @@ jobs:
           
           # Upload CSS file with short cache
           if [ -f "style.css" ]; then
-            aws s3 cp style.css s3://${{ secrets.S3_BUCKET_NAME }}/style.css \
+            aws s3 cp style.css s3://${{ secrets.AWS_S3_BUCKET }}/style.css \
               --cache-control "public, max-age=3600" \
               --content-type "text/css"
           fi
-
-      - name: Invalidate CloudFront
-        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
