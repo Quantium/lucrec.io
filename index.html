@@ -71,6 +71,11 @@
     
     <link href="./css/vendors/aos.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body class="font-inter antialiased bg-gray-900 text-gray-100 tracking-tight">
@@ -111,23 +116,26 @@
                     </div>
 
                     <!-- Desktop navigation -->
-                    <!-- <nav class="flex grow">
+                    <nav class="flex grow">
 
                         <ul class="flex grow justify-end flex-wrap items-center">
                             <li>
-                                <a class="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#0">Our Work</a>
+                                <a class="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#services">Services</a>
                             </li>
                             <li>
-                                <a class="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#0">Methodology</a>
+                                <a class="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#manifesto">Manifesto</a>
+                            </li>
+                            <li>
+                                <a class="font-medium text-gray-400 hover:text-blue-500 px-3 lg:px-5 py-2 flex items-center transition duration-150 ease-in-out" href="#market-intel">Market Intel</a>
                             </li>
                             <li class="ml-3">
-                                <a class="btn-sm text-white bg-linear-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group" href="#0">
-                                    Contact Us <span class="tracking-normal text-blue-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                                <a class="btn-sm text-white bg-linear-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group" href="mailto:audit@lucrec.io">
+                                    Audit <span class="tracking-normal text-blue-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                                 </a>
                             </li>
                         </ul>
 
-                    </nav> -->
+                    </nav>
 
                 </div>
             </div>
@@ -157,12 +165,12 @@
                             <p class="text-xl text-gray-400 mb-10" data-aos="zoom-out" data-aos-delay="200">Real software engineering for companies that understand the true cost of technical debt. We build systems, not just pages.</p>
                             <div class="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4" data-aos="zoom-out" data-aos-delay="300">
                                 <div>
-                                    <a class="btn text-white bg-linear-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group" href="#0">
+                                    <a class="btn text-white bg-linear-to-t from-blue-600 to-blue-400 hover:to-blue-500 w-full shadow-lg group" href="mailto:audit@lucrec.io">
                                         Architecture Audit <span class="tracking-normal text-blue-200 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="btn text-white bg-gray-800 hover:bg-gray-700 w-full shadow-lg group" href="#market-intelligence">
+                                    <a class="btn text-white bg-gray-800 hover:bg-gray-700 w-full shadow-lg group" href="#market-intel">
                                         Market Positioning <span class="tracking-normal text-gray-400 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                                     </a>
                                 </div>
@@ -174,9 +182,70 @@
                 </div>
             </section>
 
+            <!-- Manifesto -->
+            <section id="manifesto" class="relative">
+                <!-- Bg gradient -->
+                <div class="absolute top-0 left-0 right-0 bg-linear-to-b from-gray-800 to-gray-900 opacity-60 h-[10rem] pointer-events-none -z-10" aria-hidden="true"></div>
+
+                <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="py-12 md:py-20">
+                        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                            
+                            <!-- Visual Column -->
+                            <div class="order-2 md:order-1" data-aos="zoom-out" data-aos-delay="200">
+                                <div class="relative">
+                                    <img 
+                                        src="./images/lucrecius.png" 
+                                        alt="Lucretius" 
+                                        class="w-full h-auto rounded-xl object-cover shadow-[0_0_30px_rgba(139,92,246,0.4)] border-2 border-purple-500/30"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Text Column -->
+                            <div class="order-1 md:order-2" data-aos="zoom-out" data-aos-delay="200">
+                                <h2 class="h2 font-uncut-sans mb-4">De Rerum Digitalis</h2>
+                                <h3 class="text-xl text-gray-300 mb-6 font-semibold">Why Lucrec.io?</h3>
+                                <p class="text-lg text-gray-400 mb-8">
+                                    Modern software is plagued by superstition: black boxes no one understands and unnecessary complexity. We return to fundamental principles inspired by the Roman philosopher Lucretius.
+                                </p>
+                                
+                                <div class="space-y-6 mb-8">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-200 mb-2">
+                                            <span class="text-purple-400">Digital Atomism:</span>
+                                        </h4>
+                                        <p class="text-gray-400">Complex systems built from simple, indivisible, and robust components.</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-200 mb-2">
+                                            <span class="text-purple-400">Ex Nihilo Nihil Fit:</span>
+                                        </h4>
+                                        <p class="text-gray-400">Nothing comes from nothing. We optimize resources because we understand server physics.</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-gray-200 mb-2">
+                                            <span class="text-purple-400">Clarity Over Fear:</span>
+                                        </h4>
+                                        <p class="text-gray-400">We eliminate the fear of 'Technical Debt'. Our code is transparent and auditable.</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-xl text-gray-300 font-medium italic">
+                                    Understanding the nature of your software.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
 
             <!-- Services -->
-            <section>
+            <section id="services">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="py-12 md:py-20">
 
@@ -335,14 +404,16 @@
                 </div>
             </section>
 
+            
+
             <!-- Market Positioning 2026 -->
-            <section class="relative">
+            <section id="market-intel" class="relative">
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="py-12 md:py-20">
             
                         <!-- Section header -->
                         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                            <h2 class="h2 font-uncut-sans mb-4" id="market-intelligence">Market Intelligence 2026</h2>
+                            <h2 class="h2 font-uncut-sans mb-4">Market Intelligence 2026</h2>
                             <p class="text-xl text-gray-400">Top Innovation Dev Boutiques (LATAM/NA)</p>
                         </div>
             
@@ -502,13 +573,13 @@
                         </div>
                         <div class="text-sm space-y-2">
                             <div>
-                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="#0">Manifesto</a>
+                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="#manifesto">Manifesto</a>
                             </div>
                             <div>
-                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="#0">Services</a>
+                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="#services">Services</a>
                             </div>
                             <div>
-                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="#0">Contact</a>
+                                <a class="text-gray-400 hover:text-blue-500 transition duration-150 ease-in-out" href="mailto:audit@lucrec.io">Contact</a>
                             </div>
                         </div>
                         <div class="text-sm text-gray-600 mt-4">
