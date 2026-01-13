@@ -23,12 +23,4 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          # Sync all files excluding source files and build artifacts
-          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }} \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
-            --exclude "package*.json" \
-            --exclude "*.md" \
-            --exclude ".DS_Store" \
-            --exclude "css/style.css" \
-            --delete
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete
